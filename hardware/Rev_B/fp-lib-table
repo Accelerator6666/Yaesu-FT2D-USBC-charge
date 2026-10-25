@@ -1,0 +1,9 @@
+(fp_lib_table
+  (lib (name "Connector_USB") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/Connector_USB.pretty") (options "") (descr ""))
+  (lib (name "Fuse") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/Fuse.pretty") (options "") (descr ""))
+  (lib (name "Resistor_SMD") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/Resistor_SMD.pretty") (options "") (descr ""))
+  (lib (name "Capacitor_SMD") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/Capacitor_SMD.pretty") (options "") (descr ""))
+  (lib (name "TestPoint") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/TestPoint.pretty") (options "") (descr ""))
+  (lib (name "Package_DFN_QFN") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/Package_DFN_QFN.pretty") (options "") (descr ""))
+  (lib (name "Package_TO_SOT_SMD") (type "KiCad") (uri "${KICAD10_FOOTPRINT_DIR}/Package_TO_SOT_SMD.pretty") (options "") (descr ""))  (lib (name "FT2D") (type "KiCad") (uri "${KIPRJMOD}/FT2D.pretty") (options "") (descr "FT2D power-board custom footprints"))
+)
