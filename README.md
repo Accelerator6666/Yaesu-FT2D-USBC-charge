@@ -2,6 +2,8 @@
 
 为 Yaesu FT2DR / FT2DE 手持电台设计的 USB-C PD 转外接直流电源原型工程，使用 KiCad 10。**本工程尚未完成量产前的电气、PCB 和实物验证，请勿直接投板后连接电台。**
 
+**最新投板门槛检查：** 请先阅读 [FAB_READINESS.md](FAB_READINESS.md)。已用 KiCad 10 复现 PCB DRC 中的短接、未连接和封装一致性问题，目前仍是 `NO-GO`。
+
 ## 目标参数
 
 | 项目 | 规格 |
