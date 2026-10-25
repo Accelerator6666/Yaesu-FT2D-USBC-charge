@@ -1,0 +1,51 @@
+Designator,Quantity,Manufacturer_Part,Value_or_Requirement,Package_or_Note
+J1,1,GCT USB4085-GF-A,USB-C receptacle,KiCad Connector_USB:USB_C_Receptacle_GCT_USB4085; check GF-A drawing
+J2,1,Programming test pads,6 pads,2.7 V logic only
+J3,1,Two large solder pads,Output cable,Use verified Yaesu E-DC-6 pigtail
+TP1,1,Generic test pad,PG diagnostic,1.0x1.0 mm pad
+F1,1,Littelfuse 1206SFS300F/32,3 A slow-blow 32 V,1206 check startup surge and thermal derating
+U1,1,STUSB4500QTR,USB PD sink,QFN-24 EP 4x4; NVM programming mandatory
+Q1,1,STL6P3LLH6,30 V P-MOSFET,PowerFLAT 3.3x3.3
+U2,1,LM61460AASQRJRRQ1,6 A buck auto mode spread-spectrum,VQFN-HR RJR 4x3.5 mm
+L1,1,Bourns SRP1238A-100M,10 uH 14 A Isat 7 A Irms,13.5x12.5 mm recommended pad
+U3,1,TPS259474ARPWR,Circuit-breaker eFuse,QFN RPW 2x2 10 pin auto-retry
+D1,1,ESDA25P35-1U1M,VBUS ESD,QFN-2L pinout from ST datasheet
+D2,1,ESDA25W,CC1/CC2 ESD,SOT-323 pinout from ST datasheet
+R1,1,Generic 0603,10 kohm 1%,RESET pulldown
+R2 R3,2,Generic 0603,4.7 kohm 1%,I2C pullup to PD_2V7
+R4,1,Generic 0603,1 kohm 1%,VBUS_SW discharge series
+R5,1,Generic 0603,22 kohm 1%,PMOS gate series
+R6,1,Generic 0603,470 ohm 1%,STUSB VBUS sense series
+R7,1,Generic 0603,100 kohm 1%,PMOS gate-to-source
+R12,1,Generic 0603,100 kohm 0.1%,Buck FB upper
+R13,1,Generic 0603,8.66 kohm 0.1%,Buck FB lower
+R14,1,Generic 0603,1 kohm 1%,DNP feedforward tuning
+R15,1,Generic 0603,100 kohm 1%,Buck PGOOD pullup
+R16,1,Generic 0603,33.2 kohm 1%,400 kHz RT
+R17,1,Generic 0603,133 kohm 1%,Buck input UVLO upper
+R18,1,Generic 0603,10 kohm 1%,Buck input UVLO lower
+R19,1,Generic 0603,0 ohm,Boot rise-time tuning position
+R20,1,Generic 0603,470 kohm 1%,eFuse EN upper
+R21,1,Generic 0603,100 kohm 1%,eFuse EN lower
+R22,1,Generic 0603,101 kohm 1%,eFuse OVLO upper
+R23,1,Generic 0603,10 kohm 1%,eFuse OVLO lower
+R24,1,Generic 0603,100 kohm 1%,eFuse PGTH upper
+R25,1,Generic 0603,12 kohm 1%,eFuse PGTH lower
+R26,1,Generic 0603,820 ohm 1%,eFuse ILM about 4.07 A
+C1 C2,2,Generic X7R,1 uF 6.3 V,0603 STUSB regulator bypass
+C3,1,Generic X7R,1 uF 25 V,0805 STUSB VDD bypass
+C4,1,Generic X7R,47 nF 50 V,0603 PMOS gate slew
+C5,1,Generic X7R,1 uF 25 V,0603 STUSB VBUS sense filter
+C10,1,Generic X7R,1 uF 16 V,0603 Buck VCC bypass
+C11,1,Generic C0G,10 pF 50 V,0603 DNP feedforward tuning
+C12 C13,2,Generic X7R,100 nF 50 V,0603 Buck VIN/PGND HF bypass
+C14 C15 C16 C17,4,Generic X7R,10 uF 50 V,1210 check >=10 uF combined effective at 20 V
+C18,1,Panasonic EEHZL1V470R,47 uF 35 V,Hybrid ESR 60 mohm max; 5x5.8 mm
+C19,1,Generic X7R,100 nF 16 V,0603 Buck bootstrap
+C20 C21 C22,3,Generic X7R,47 uF 25 V,1210/1812 check DC-bias effective capacitance
+C23,1,APAQ 250AVHT221M0608,220 uF 25 V,Polymer ESR 24 mohm max; 6.3x7.5 mm
+C24,1,Generic X7R,100 nF 25 V,0603 eFuse input bypass
+C25,1,Generic X7R,47 uF 25 V,1210/1812 eFuse output bulk
+C26,1,Generic X7R,100 nF 25 V,0603 eFuse output HF bypass
+C27,1,Generic X7R,3.3 nF 25 V,0603 eFuse dVdt
+C28,1,Generic X7R,2.2 nF 10 V,0603 eFuse ITIMER
