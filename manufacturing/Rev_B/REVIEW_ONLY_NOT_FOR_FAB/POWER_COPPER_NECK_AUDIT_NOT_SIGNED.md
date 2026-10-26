@@ -2,9 +2,11 @@
 
 **结论：仍需工程复核，3 A 功率/温升 NOT APPROVED。** 本轮在全新安装的 KiCad 10.0.7 上再次运行：ERC **0**、DRC violations **0**、unconnected **0**、schematic parity **0**。静态规则全通过不等于 3 A 负载或电台供电安全保证。
 
+**2026-10-26 更新**：针对 U3 新增 In2.Cu 局部功率扩散岛，`/V12P5` **51.54 mm²**、`/VOUT` **55.29 mm²**，每网 **2 颗标准 0.6/0.3 mm 通孔过孔**连接顶层已有大铜，合计 4 颗过孔；全部铜区各自只有 1 个连续填充轮廓。输入过孔 `(104,44.1)`、`(104,45)`，输出过孔 `(111,45)`、`(115,44)`，均已经过 KiCad 10 DRC/Parity **0/0/0**。不使用焊盘微盲孔或需要 JLC 额外 VIA-IN-PAD 填孔的工艺。新增区域详见 `RevB_In2_power_stitch_REVIEW_ONLY.png`，可复现脚本 `engineering_tools/add_u3_power_stitch_rev_b.py`。
+
 ## 重新核查的功率网
 
-下面为 `engineering_tools/audit_power_copper_rev_b.py` 读取的当前 KiCad PCB 顶层填铜面积与原走线最小宽度；**原走线可能已被同网络宽铜部分覆盖**。
+下面为 `engineering_tools/audit_power_copper_rev_b.py` 读取的当前 KiCad PCB **顶层**填铜面积与原走线最小宽度；**原走线可能已被同网络宽铜部分覆盖**。新增 In2.Cu 岛和标准过孔**没有改变顶层原走线狭颈**，仍须签核。
 
 | 功率网 | F.Cu 填铜 mm² | 原走线最窄 mm | 本轮按 50 µm 栅格抽样得到的局部最窄铜截面 mm* | 抽样低于 1.0 mm 的点数* |
 | --- | ---: | ---: | ---: | ---: |
@@ -27,9 +29,11 @@
 ## 工程解释和下一步
 
 - 嘉立创 4 层板默认内层常为 **0.5 oz**，当前 Rev B 规划外层 **1 oz**；最终铜厚、堆叠、孔铜与订单配置要统一。面积不能替代电流通道最小宽度和铜厚。[JLC 官方 Copper Weight](https://jlcpcb.com/help/article/jlcpcb-copper-weight)
+- [TI TPS25947 2026 Rev C 原厂 Layout（8.4.1）](https://www.ti.com/lit/ds/symlink/tps25947.pdf)提出 **高电流路径尽量短，并按至少 2 倍满载电流设计截面**；IN/OUT 大铜和散热过孔有助于散热与电流分布。Rev B 新增散热扩散岛只是其中一步，0.3 mm 的 U3 pin escape 并未证明满足该建议，更不能把 1 oz/0.5 oz 铜厚叠加成单层连续铜宽。
+- U3 输出原 C26 **100 nF / 25 V**，升级成 **2.2 µF / 25 V X7R、0603** 的候选 `C415535`（不改 pad 尺寸）。符合 TI 对 OUT 临近 **≥1 µF 标称**陶瓷去耦的方向，但还需查 **12.5 V 实际偏压后的有效容量和约 4.75 mm 的现有距离**；切忌当作去耦完全签核。
 - 输入/输出完整电流路径、相邻 pads 与焊锡实际截面、回流/地过孔、器件封装降额、散热环境以及 I²R 压降/最大温升需要由工程审查确认。3 A 电台电源还应评估发射脉冲、线束电阻和短路瞬态。
 - U2 Buck 高频输入回路特别依赖输入电容与 PGND 最小环路，而 SW 铜区过大会影响 EMI；参考 [TI LM61460-Q1 原厂 Layout 指南](https://www.ti.com/lit/ds/symlink/lm61460-q1.pdf)。U3 对应 [TI TPS25947 原厂规格](https://www.ti.com/lit/ds/symlink/tps25947.pdf)。
-- 在明确电流路径、实际铜厚并复核 0.3 mm U3 pad escape 后才能决定加铜/加过孔、调整 U3 位置或对铜厚升档；**当前不得把检测报告视为制造签字**。
+- 已增加无需额外填孔工艺的 4 颗通孔散热过孔与 In2 两块局部宽铜，但在明确电流路径、实际铜厚并复核 0.3 mm U3 pad escape 后，仍需决定是否调整 U3 引出或对铜厚升档；**当前不得把检测报告视为制造签字**。
 
 重跑命令（须用 KiCad 10 的 `/usr/bin/python3` / `pcbnew`）：
 

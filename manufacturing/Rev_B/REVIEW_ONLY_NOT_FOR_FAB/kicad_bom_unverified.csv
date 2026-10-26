@@ -20,7 +20,7 @@
 "C23","250AVHT221M0608_220u","Capacitor_SMD:CP_Elec_6.3x7.7","1",""
 "C24","100n_25V","Capacitor_SMD:C_0603_1608Metric","1",""
 "C25","47u_25V","Capacitor_SMD:C_1210_3225Metric","1",""
-"C26","100n_25V","Capacitor_SMD:C_0603_1608Metric","1",""
+"C26","2u2_25V","Capacitor_SMD:C_0603_1608Metric","1",""
 "C27","3n3_25V","Capacitor_SMD:C_0603_1608Metric","1",""
 "C28","2n2_10V","Capacitor_SMD:C_0603_1608Metric","1",""
 "D1","ESDA25P35-1U1M","FT2D:ST_ESDA25P35_1U1M","1",""

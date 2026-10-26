@@ -2,9 +2,9 @@
 
 为 Yaesu FT2DR / FT2DE 手持电台设计的 USB-C PD 转外接直流电源原型工程，使用 KiCad 10。**本工程尚未完成量产前的电气、PCB 和实物验证，请勿直接投板后连接电台。**
 
-**最新进展（2026-10-26）：** [PCB Rev B 工作版](hardware/Rev_B/README.md) 已更换 J1 为 HRO `TYPE-C-31-M-12`（JLC **C165948**）、L1 为 JIERR `SRG1260-100-M`（**C53463013**），并完成接地回流修复、局部 1.6–2.0 mm 目标功率铜皮、重新填铜。C18 已采用 Panasonic `EEH-ZA1V470P`（**C178639**）的匹配 6.3 mm 焊盘作为候选，取代原 5 mm 焊盘型号，仍须核定温度等级。KiCad 10.0.7 **ERC 0 / DRC 违规 0 / 未连接 0 / 原理图对照 0**。
+**最新进展（2026-10-26）：** [PCB Rev B 工作版](hardware/Rev_B/README.md) 已更换 J1 为 HRO `TYPE-C-31-M-12`（JLC **C165948**）、L1 为 JIERR `SRG1260-100-M`（**C53463013**），并完成接地回流修复、局部 1.6–2.0 mm 目标功率铜皮、重新填铜。C18 已采用 Panasonic `EEH-ZA1V470P`（**C178639**）的匹配 6.3 mm 焊盘作为候选，取代原 5 mm 焊盘型号，仍须核定温度等级。**本轮 U3 新增 4 颗标准功率过孔和 In2 两个独立局部宽铜岛；C26 从 100 nF 升级为 2.2 µF/25 V X7R 候选（C415535），0603 焊盘不变。** 更新后 KiCad 10.0.7 **ERC 0 / DRC 违规 0 / 未连接 0 / 原理图对照 0**，3 A 温升仍未签核。
 
-嘉立创用的 [BOM/CPL 原生导出及 SMT 供料评审](manufacturing/Rev_B/README.md) 已更新到 **57 行原生 BOM / 53 个实际 SMT 坐标 / 53 个候选 JLC 物料号（36 种料）**；候选 JLC 四列 BOM、五列 CPL 与逐项来源追溯表都在 `REVIEW_ONLY_NOT_FOR_FAB`，并已通过 53/53 本地 BOM/CPL 位号和坐标审计。另有 **仅供 QA 审阅的 4 层 Gerber、焊膏和钻孔文件**。**当前仍 NO-GO，不要直接下单**：待完成 3 A 电热及 Buck 回路复核、全部候选元件真实 SMT 供货/兼容性确认、JLC 贴片预览和工程签核。放行脚本会拒绝生成正式订单文件；原始评审 PCB 的 [基线检查](FAB_READINESS.md) 继续保留。
+嘉立创用的 [BOM/CPL 原生导出及 SMT 供料评审](manufacturing/Rev_B/README.md) 已更新到 **57 行原生 BOM / 53 个实际 SMT 坐标 / 53 个候选 JLC 物料号（37 种料）**；候选 JLC 四列 BOM、五列 CPL 与逐项来源追溯表都在 `REVIEW_ONLY_NOT_FOR_FAB`，并已通过 53/53 本地 BOM/CPL 位号和坐标审计。**4 层 Gerber、焊膏、钻孔已随本轮新增过孔/内层铜重新导出，仅供 QA 审阅。** **当前仍 NO-GO，不要直接下单**：待完成 3 A 电热及 Buck 回路复核、全部候选元件真实 SMT 供货/兼容性确认、JLC 贴片预览和工程签核。放行脚本会拒绝生成正式订单文件；原始评审 PCB 的 [基线检查](FAB_READINESS.md) 继续保留。
 
 ## 目标参数
 

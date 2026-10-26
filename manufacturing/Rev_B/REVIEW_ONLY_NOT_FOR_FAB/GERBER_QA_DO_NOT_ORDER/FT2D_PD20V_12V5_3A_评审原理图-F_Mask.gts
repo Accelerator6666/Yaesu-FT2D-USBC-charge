@@ -1,12 +1,12 @@
 %TF.GenerationSoftware,KiCad,Pcbnew,10.0.7-10.0.7~ubuntu24.04.1*%
-%TF.CreationDate,2026-10-25T21:33:28-04:00*%
+%TF.CreationDate,2026-10-26T07:00:14+00:00*%
 %TF.ProjectId,FT2D_PD20V_12V5_3A______,46543244-5f50-4443-9230-565f31325635,rev?*%
 %TF.SameCoordinates,Original*%
 %TF.FileFunction,Soldermask,Top*%
 %TF.FilePolarity,Negative*%
 %FSLAX46Y46*%
 G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
-G04 Created by KiCad (PCBNEW 10.0.7-10.0.7~ubuntu24.04.1) date 2026-10-25 21:33:28*
+G04 Created by KiCad (PCBNEW 10.0.7-10.0.7~ubuntu24.04.1) date 2026-10-26 07:00:14*
 %MOMM*%
 %LPD*%
 G01*

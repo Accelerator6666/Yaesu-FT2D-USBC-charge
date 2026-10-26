@@ -898,7 +898,7 @@
       (pin_names (offset 0.508))
       (exclude_from_sim no) (in_bom yes) (on_board yes)
       (property "Reference" "C" (at 0 6.35 0) (effects (font (size 1 1))))
-      (property "Value" "100n_25V" (at 0 -6.35 0) (effects (font (size 1 1))))
+      (property "Value" "2u2_25V" (at 0 -6.35 0) (effects (font (size 1 1))))
       (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 0 0 0) (effects (font (size 1 1)) (hide yes)))
       (property "Datasheet" "" (at 0 0 0) (effects (font (size 1 1)) (hide yes)))
       (symbol "C26_0_1"
