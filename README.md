@@ -2,9 +2,9 @@
 
 为 Yaesu FT2DR / FT2DE 手持电台设计的 USB-C PD 转外接直流电源原型工程，使用 KiCad 10。**本工程尚未完成量产前的电气、PCB 和实物验证，请勿直接投板后连接电台。**
 
-**最新进展（2026-10-25）：** [PCB Rev B 工作版](hardware/Rev_B/README.md) 已将 J1 改为 HRO `TYPE-C-31-M-12`（JLC **C165948**）、L1 改为 JIERR `SRG1260-100-M`（**C53463013**），并向电感移动 Buck U2、重建走线和局部加宽顶层功率铜皮。KiCad 检查 **ERC 0 / DRC 违规 0 / 原理图对照 0，但仍有 5 项 GND 未连接**。这些是实质性接地问题，**NO-GO，不能下单**。
+**最新进展（2026-10-26）：** [PCB Rev B 工作版](hardware/Rev_B/README.md) 已更换 J1 为 HRO `TYPE-C-31-M-12`（JLC **C165948**）、L1 为 JIERR `SRG1260-100-M`（**C53463013**），并完成接地回流修复、局部 1.6–2.0 mm 目标功率铜皮、重新填铜。C18 已采用 Panasonic `EEH-ZA1V470P`（**C178639**）的匹配 6.3 mm 焊盘作为候选，取代原 5 mm 焊盘型号，仍须核定温度等级。KiCad 10.0.7 **ERC 0 / DRC 违规 0 / 未连接 0 / 原理图对照 0**。
 
-嘉立创用的 [BOM/CPL 原生导出及 SMT 供料评审](manufacturing/Rev_B/README.md) 已更新到 **57 行 BOM / 53 个实际 SMT 坐标**，J1/L1 数据手册和焊盘已比对；剩余供料、GND、载流和 SMT 预览待签核。放行脚本已确认会拒绝导出不安全的 Gerber。原始评审 PCB 的 [基线检查](FAB_READINESS.md) 继续保留。
+嘉立创用的 [BOM/CPL 原生导出及 SMT 供料评审](manufacturing/Rev_B/README.md) 已更新到 **57 行 BOM / 53 个实际 SMT 坐标**，另有 **仅供 QA 审阅的 4 层 Gerber、焊膏和钻孔文件**。**当前仍 NO-GO，不要直接下单**：待完成 3 A 电热及 Buck 回路复核、通用 R/C 等完整 LCSC 供料、JLC 贴片预览和工程签核。放行脚本会拒绝生成正式订单文件；原始评审 PCB 的 [基线检查](FAB_READINESS.md) 继续保留。
 
 ## 目标参数
 

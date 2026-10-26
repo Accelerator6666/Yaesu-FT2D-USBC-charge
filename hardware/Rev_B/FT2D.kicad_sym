@@ -778,8 +778,8 @@
       (pin_names (offset 0.508))
       (exclude_from_sim no) (in_bom yes) (on_board yes)
       (property "Reference" "C" (at 0 6.35 0) (effects (font (size 1 1))))
-      (property "Value" "EEHZL1V470R_47u" (at 0 -6.35 0) (effects (font (size 1 1))))
-      (property "Footprint" "Capacitor_SMD:CP_Elec_5x5.8" (at 0 0 0) (effects (font (size 1 1)) (hide yes)))
+      (property "Value" "EEHZA1V470P_47u" (at 0 -6.35 0) (effects (font (size 1 1))))
+      (property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.8" (at 0 0 0) (effects (font (size 1 1)) (hide yes)))
       (property "Datasheet" "" (at 0 0 0) (effects (font (size 1 1)) (hide yes)))
       (symbol "C18_0_1"
         (rectangle (start -7.62 -3.81) (end 7.62 3.81) (stroke (width 0.254) (type default)) (fill (type background)))
