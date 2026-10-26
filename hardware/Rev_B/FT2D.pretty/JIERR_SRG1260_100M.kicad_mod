@@ -1,0 +1,11 @@
+(footprint "JIERR_SRG1260_100M"
+  (version 20240108) (generator "pcbnew") (layer "F.Cu")
+  (descr "JIERR SRG1260-100-M 10uH shielded power inductor; OEM recommended pads F=14.6mm G=7.4mm I=4.8mm; height 6.0mm max")
+  (property "Reference" "REF**" (at 0 -7.55) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.12))))
+  (property "Value" "SRG1260-100-M" (at 0 7.55) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12))))
+  (attr smd)
+  (fp_rect (start -6.85 -6.4) (end 6.85 6.4) (stroke (width 0.1) (type default)) (fill none) (layer "F.Fab"))
+  (fp_rect (start -7.15 -6.7) (end 7.15 6.7) (stroke (width 0.05) (type default)) (fill none) (layer "F.CrtYd"))
+  (pad "1" smd rect (at -5.5 0) (size 3.6 4.8) (layers "F.Cu" "F.Paste" "F.Mask"))
+  (pad "2" smd rect (at 5.5 0) (size 3.6 4.8) (layers "F.Cu" "F.Paste" "F.Mask"))
+)

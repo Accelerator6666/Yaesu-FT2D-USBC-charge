@@ -1,4 +1,7 @@
-"""Experimentally reroute a Rev B working copy with KiCad 10 / Freerouting.
+"""Legacy / PRE-SUBSTITUTION autorouter for GCT USB4085 layout only.
+
+WARNING: DO NOT run on current HRO J1 + JIERR L1 Rev B. Its hard-coded
+pad escapes refer to the old connector coordinates and will create shorts.
 
 This is NOT a release step. The resulting board must pass full KiCad DRC,
 have power-net copper reviewed, and have all assembly parts sourced before
@@ -49,6 +52,10 @@ def main():
     pcb_filename = str(Path(pcb_filename).resolve())
     routing_filename = str(Path(routing_filename).resolve())
     board = p.LoadBoard(pcb_filename)
+
+    j1 = next(f for f in board.GetFootprints() if f.GetReference() == 'J1')
+    if j1.GetValue() == 'TYPE-C-31-M-12':
+        raise SystemExit('Refusing legacy autorouter: J1 is now HRO. Use the saved Rev B route.')
 
     if step == "prepare":
         # Shorten the two impossible fan-outs of the legacy layout; no changes

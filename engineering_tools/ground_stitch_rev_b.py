@@ -15,7 +15,9 @@ board_path = Path(sys.argv[1]).resolve()
 apply = len(sys.argv) > 2 and sys.argv[2] == "--apply"
 board = p.LoadBoard(str(board_path))
 fills = next(z for z in board.Zones() if z.IsOnLayer(p.F_Cu)).GetFilledPolysList(p.F_Cu)
-targets = (0, 1, 2, 3, 4, 5, 6, 14)
+targets = range(fills.OutlineCount())
+existing_ground_vias = [tr.GetPosition() for tr in board.GetTracks()
+                        if isinstance(tr, p.PCB_VIA) and tr.GetNetname() == '/GND']
 mm = p.ToMM
 
 
@@ -51,11 +53,17 @@ def clearance_score(x, y):
 
 
 for i in targets:
+    if any(fills.Contains(position, i) for position in existing_ground_vias):
+        print('Skip already stitched GND region', i, flush=True)
+        continue
     bbox = fills.Outline(i).BBox()
     x0, y0 = mm(bbox.GetX()), mm(bbox.GetY())
     w, h = mm(bbox.GetWidth()), mm(bbox.GetHeight())
+    if w > 50 or h > 50:
+        print('Skip already connected board-wide ground region', i, flush=True)
+        continue
     found = []
-    step = 0.5
+    step = 0.25
     nx, ny = int(w/step), int(h/step)
     for ix in range(nx):
         for iy in range(ny):
