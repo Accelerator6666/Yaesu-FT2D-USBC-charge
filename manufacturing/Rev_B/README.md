@@ -1,10 +1,10 @@
 # 嘉立创 JLCPCB 4 层 PCB + SMT 制造准备
 
-**状态：静态 ERC/DRC/Parity 全通过；制造 NO-GO（2026-10-26）**。
+**状态：KiCad 10.0.7 新一轮 ERC/DRC/Parity 全通过；53/53 SMT 位号有候选 C-code，但制造 NO-GO（2026-10-26）**。
 
 此目录 `REVIEW_ONLY_NOT_FOR_FAB` 已包含采购/坐标核对数据、完整 4 层 Gerber 和 Excellon 钻孔 **QA 预览**。**不要直接将 QA 文件上传为制造订单**：尚无 BOM/CPL 完整签核与 3 A 工程批准。真正放行条件见 `../../hardware/Rev_B/README.md`。
 
-放行门禁脚本：`../../engineering_tools/export_jlcpcb_release_rev_b.sh`。它会先执行 ERC/DRC/Parity 检查，要求完整的 `BOM_APPROVED.csv`、已目视确认的 `CPL_APPROVED.csv` 与三项工程签核，并以 `validate_jlc_smt_release_rev_b.py` **逐位号检查**有无漏件、多件、重复件、无 LCSC 号、错误坐标和非顶面装配。已验证 **ERC 0 / DRC violations 0 / unconnected 0 / parity 0**；下一道门禁因**尚未取得全板料号及工程签核**而拒绝创建可下单包。
+放行门禁脚本：`../../engineering_tools/export_jlcpcb_release_rev_b.sh`。它会先执行 ERC/DRC/Parity 检查，要求经人工核准的 `BOM_APPROVED.csv`、已目视确认的 `CPL_APPROVED.csv` 与三项工程签核，并以 `validate_jlc_smt_release_rev_b.py` **逐位号检查**有无漏件、多件、重复件、无 LCSC 号、错误坐标和非顶面装配。本轮重新独立验证 **ERC 0 / DRC violations 0 / unconnected 0 / parity 0**。非正式候选 BOM/CPL **53/53** 通过结构检查，但**没有一个候选代表已获采购/装配批准**；正式放行门禁仍必须拒绝创建可下单包。
 
 ## 当前可用的非下单文件
 
@@ -13,7 +13,11 @@
 | `REVIEW_ONLY_NOT_FOR_FAB/kicad_bom_unverified.csv` | KiCad 10 原生 **57 行物料项** | 非 JLC 成品 BOM；缺大量立创料号，包含 DNP/人工工序项 |
 | `REVIEW_ONLY_NOT_FOR_FAB/kicad_positions_unverified.csv` | 原生 **53 个 SMT 非 DNP** 器件位置和方向，含之前被漏掉的 L1、Q1、U2、U3、D1；`audit_jlc_cpl_rev_b.py` 已确认与 PCB 位号/坐标全集相符 | KiCad Y 为负，J1 显示 `-90°`，格式/旋转未按 JLC 在线预览核准 |
 | `REVIEW_ONLY_NOT_FOR_FAB/FT2D_RevB_SMT_sourcing_DRAFT.xlsx` | 汇总现有可对应的 LCSC 料号、风险、BOM 与位置对照，另附正 Y 预览列 | 整份工作簿**禁止**当作最终 SMT 下单资料 |
+| `REVIEW_ONLY_NOT_FOR_FAB/JLC_CANDIDATE_BOM_NOT_APPROVED.csv` | **53 个** SMT 位号的 JLC 4 列候选 BOM，覆盖 36 种不同料号，包含 F1/C18/C23 候选换料 | **不是批准采购单**；实际供应、焊盘、极性、参数尚未签核 |
+| `REVIEW_ONLY_NOT_FOR_FAB/JLC_CANDIDATE_CPL_NOT_APPROVED.csv` | 与 KiCad 53 个原生贴装位置一一对应的 JLC 五列候选坐标表，本地静态比对 53/53 | Y 采用 KiCad 原始负值；J1 `-90°` 和所有极性/取放方向待 JLC 在线目视复查 |
+| `REVIEW_ONLY_NOT_FOR_FAB/SMT_CANDIDATE_TRACEABILITY_NOT_APPROVED.csv` | 每个位号的原始值、候选 MPN、C-code、风险类别和 LCSC 目录核对入口 | LCSC 目录可查 ≠ JLC 工厂支持 SMT/动态库存 ≠ 工程批准 |
 | `REVIEW_ONLY_NOT_FOR_FAB/RevB_top_copper_REVIEW_ONLY.png` | 当前 PCB 顶层走线/局部宽铜和丝印审阅图 | 仅供工程复核，不能当 Gerber 或制造数据 |
+| `REVIEW_ONLY_NOT_FOR_FAB/POWER_COPPER_NECK_AUDIT_NOT_SIGNED.md` | 本轮 KiCad 10 独立重测、功率铜/狭颈抽样及 U3 0.3 mm 引脚逃线重点位置 | 仅为 50 µm 栅格局部几何审计，**不是 3 A 电流与热批准** |
 | `REVIEW_ONLY_NOT_FOR_FAB/GERBER_QA_DO_NOT_ORDER/` | 4 层铜、阻焊/丝印/焊膏、外形、PTH/NPTH 钻孔和 Gerber job 文件 | **仅供审阅；未完成工厂订单预览、丝印位置、CPL 与 BOM 对照** |
 | `REVIEW_ONLY_NOT_FOR_FAB/CRITICAL_SMT_PARTS_REVIEW.md` | F1/C18/C23 的原型号与嘉立创替代规格、数据来源及待签核项 | 物料候选，不是采购批准单 |
 
@@ -31,7 +35,7 @@
 | C18 | 原 Panasonic `EEH-ZL1V470R` → Panasonic **`EEH-ZA1V470P` 候选已同步到 PCB/原理图** | **C178639** | 47 µF/35 V/60 mΩ/1.3 A；**6.3×5.8 mm** 焊盘已更换且 DRC 0；**105°C** 相较原 **135°C** 的温度等级需复核 |
 | C23 | 250AVHT221M0608 → jieerrui `MA25V220M6X8` **候选** | **C46550464** | 220 µF/25 V、ESR 28 mΩ（原 24 mΩ），2.9 A @100kHz；**105°C** 温度等级，需核实 DC-DC 稳定性和尺寸 |
 
-供料工作表还记录了初选型号：**R12/R13** 0.1% 薄膜电阻 `C122538` / `C861591`，**C14–C17** 10 µF/50 V 1210 X7R `C77102`，**C20–C22/C25** 47 µF/25 V 1210 X5R `C3848311`；以上**只是查到同标称参数的候选**，必须分别验证 20 V/12.5 V 偏压后的有效电容、尺寸/功率/容差以及库存。其余通用 R/C 仍需逐项落实 LCSC 号；不能自动套用“任意 0603”。J2 是 PCB 编程焊盘，J3 为电台输出线束手工焊接位置；R14、C11 为 DNP。
+供料工作表还记录了初选型号：**R12/R13** 0.1% 薄膜电阻 `C122538` / `C861591`，**C14–C17** 10 µF/50 V 1210 X7R `C77102`，**C20–C22/C25** 47 µF/25 V 1210 X5R `C3848311`；以上**只是查到同标称参数的候选**，必须分别验证 20 V/12.5 V 偏压后的有效电容、尺寸/功率/容差以及库存。其余通用 R/C、D1/D2 已补齐候选 C-code，R22 101kΩ 不必改电路，选 KOA `RN73H1JTTD1013F100` / `C4016651`，但**JLC 工厂是否受理该型号还没证实**。J2 是 PCB 编程焊盘，J3 为电台输出线束手工焊接位置；R14、C11 为 DNP。
 
 ## 预定制板参数（正式下单前锁定）
 
@@ -46,7 +50,7 @@
 
 1. ~~修完 5 项 GND 未连接~~：**已完成**，采用常规 GND 穿孔与局部逃线；下一步完成 3 A 铜箔实际狭颈、Buck 高频功率环路、接地回流和温升复核。
 2. **已完成** KiCad ERC、DRC 和 Schematic Parity 全部通过，且 **unconnected = 0**；如再修改任何封装/线宽需重新验证。
-3. 对照各原厂 land pattern、核实 BOM 的每个 LCSC 型号与实时库存；特别补齐 F1、C18、C23 及通用 R/C 的物料号；确认 J1 固定脚装配工艺。
+3. 对照各原厂 land pattern、核实候选 BOM 的**53 个** SMT 位号是否均可由 JLC 装配、实时库存和贴装服务；重点解决 F1/C18/C23 的替代降额、1210 MLCC 的 DC-bias、有极性器件方向、J1 穿孔固定脚工艺，并签核后另行制备正式文件。
 4. 生成 Gerber X2 / Excellon / BOM / CPL；在 KiCad Gerber Viewer 与 JLC 在线预览中交叉检查钻孔和器件朝向，特别是 KiCad 导出的位置 Y 方向。
 5. 先做少量工程板，在未接电台状态用电子负载完成输入 PD 协商、12.5V 稳态、0–3A、过压/短路/热与射频噪声测试。
 
