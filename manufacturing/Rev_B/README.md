@@ -4,6 +4,8 @@
 
 此目录 `REVIEW_ONLY_NOT_FOR_FAB` 已包含采购/坐标核对数据、完整 4 层 Gerber 和 Excellon 钻孔 **QA 预览**。**不要直接将 QA 文件上传为制造订单**：尚无 BOM/CPL 完整签核与 3 A 工程批准。真正放行条件见 `../../hardware/Rev_B/README.md`。
 
+**本轮加速下单准备**：新建 `QUOTE_PREVIEW_ONLY_NOT_RELEASED/`，把 4 层 Gerber+PTH/NPTH 钻孔封装为一个 JLC 可上传的 ZIP，并提供 JLC 格式 53 位号候选 BOM/CPL 与 SHA-256 校验清单。可先到 JLC 下单页进行**报价、层叠及 SMT 映射预览**，但必须完成下列人工检查后才能确认付款。生成器 `../../engineering_tools/build_rev_b_jlc_quote_preview.py` 重跑 ERC/DRC/Parity 和 BOM/CPL 位号检查，遇到错误自动拒绝生成。另有 `PD_NVM_AND_FIRST_POWER_ON_PLAN.md`：出厂 STUSB4500 的 20V PDO 电流默认仅 1A，建议 20V/3A + `POWER_ONLY_ABOVE_5V` NVM 配置并在首件上电读回核实。`PREFLIGHT/power_path_screening.json` 记录 U3 细线的保守电阻/损耗估算，**不是热性能批准**。
+
 放行门禁脚本：`../../engineering_tools/export_jlcpcb_release_rev_b.sh`。它会先执行 ERC/DRC/Parity 检查，要求经人工核准的 `BOM_APPROVED.csv`、已目视确认的 `CPL_APPROVED.csv` 与三项工程签核，并以 `validate_jlc_smt_release_rev_b.py` **逐位号检查**有无漏件、多件、重复件、无 LCSC 号、错误坐标和非顶面装配。本轮重新独立验证 **ERC 0 / DRC violations 0 / unconnected 0 / parity 0**。非正式候选 BOM/CPL **53/53** 通过结构检查，但**没有一个候选代表已获采购/装配批准**；正式放行门禁仍必须拒绝创建可下单包。
 
 ## 当前可用的非下单文件

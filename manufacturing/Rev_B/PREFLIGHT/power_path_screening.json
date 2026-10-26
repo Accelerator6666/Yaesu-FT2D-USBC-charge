@@ -1,0 +1,45 @@
+{
+  "status": "ENGINEERING_SCREENING_ONLY_NOT_FAB_APPROVAL",
+  "board": "FT2D_PD20V_12V5_3A_评审原理图.kicad_pcb",
+  "conditions": {
+    "Vout_V": 12.5,
+    "Iout_A": 3.0,
+    "requested_PD_V": 20.0,
+    "nominal_FCu_thickness_um": 35
+  },
+  "load_power_W": 37.5,
+  "PD_input_current_at_85pct_efficiency_A": 2.206,
+  "PD_input_current_at_90pct_efficiency_A": 2.083,
+  "TPS259474A_R26_820ohm_nominal_current_trip_A": 4.07,
+  "TPS25947_typical_Ron_28p3mohm_at_3A_loss_W": 0.255,
+  "U3_0p3mm_escapes": {
+    "/V12P5": {
+      "pad": "5",
+      "pad_size_mm": [
+        0.3,
+        2.4
+      ],
+      "nominal_track_width_mm": 0.2998,
+      "entire_track_length_mm": 2.8451,
+      "assume_35um_copper_full_length_R_mohm_at_20C": 4.674,
+      "assume_35um_copper_full_length_I3A_loss_mW_at_90C": 53.6
+    },
+    "/VOUT": {
+      "pad": "6",
+      "pad_size_mm": [
+        0.3,
+        2.4
+      ],
+      "nominal_track_width_mm": 0.2998,
+      "entire_track_length_mm": 1.4916,
+      "assume_35um_copper_full_length_R_mohm_at_20C": 2.451,
+      "assume_35um_copper_full_length_I3A_loss_mW_at_90C": 28.1
+    }
+  },
+  "limits": [
+    "Track estimates are intentionally conservative by assigning full 3 A to the whole narrow trace, even where its pad and zones are connected.",
+    "Copper foil tolerance, zone continuity under soldered parts, via plating, board stackup, thermal dissipation, connector and cable losses are not evaluated.",
+    "TPS25947 R_ILM relationship and R_ON are typical, not guaranteed max/min thresholds; check datasheet/current-limit distributions.",
+    "Need real 3 A dummy-load test, source-contract check, voltage droop, IR/thermocouple temperature rise, and RF test before connecting FT2D."
+  ]
+}

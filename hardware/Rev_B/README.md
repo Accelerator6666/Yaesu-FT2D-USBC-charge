@@ -39,6 +39,8 @@ J1 原厂 [PDF](https://datasheet.lcsc.com/datasheet/pdf/9e56b777c022540fcce7c7f
 4. **SMT 机器贴装仍未确认**：53 个位置与 PCB 坐标已通过本地审计，但 HRO J1 `-90°`、异形功率器件方向、极性电容、贴片取放中心及 KiCad Y 轴符号必须在 JLC 预览中人工核对。
 5. **功能级风险**：STUSB4500 NVM 需编程并验 20 V PDO；eFuse 限流、DC-DC 环路、输出线束电台端极性、热和射频噪声尚无实测。
 
+**新增定量初筛（仍未签核）**：按照 PCB 当前 U3 Pad 5/6 和 35 µm 标称顶铜，假设整段 0.2998 mm 原走线独自承载 3A，分别在 90°C 得到约 **54 mW（2.85 mm 输入）/28 mW（1.49 mm 输出）**的铜阻损耗模型值；实际上 pad 与同网铜区有重叠和并联，若实板铜厚偏低或温度更高损耗还会增加，此算法不能计算温升。U3 典型 28.3mΩ R_ON 在 3A 下自身耗散约 **0.255W**，R26=820Ω 按 TI 典型公式电流门限约 **4.07A**，必须用热测、过流试验核查。自动初筛脚本 `../../engineering_tools/screen_rev_b_power_path.py` 以及结果 `../../manufacturing/Rev_B/PREFLIGHT/power_path_screening.json` 可复现。**STUSB4500 出厂 PDO3=20V/1A，且 `POWER_ONLY_ABOVE_5V=0`，不是本项目所需 20V/3A**；详见 `../../manufacturing/Rev_B/PD_NVM_AND_FIRST_POWER_ON_PLAN.md`。可先使用 `../../manufacturing/Rev_B/QUOTE_PREVIEW_ONLY_NOT_RELEASED/` 作 JLC 在线报价/贴装预览，**不可当作正式放行**。
+
 ## 已完成的布线/设计动作
 
 - 原评审 PCB 不变；此目录保留 Rev B 的独立原理图、PCB、工程设置和封装库。
