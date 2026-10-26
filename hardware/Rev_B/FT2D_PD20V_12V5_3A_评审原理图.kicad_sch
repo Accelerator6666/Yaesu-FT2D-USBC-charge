@@ -513,7 +513,7 @@
       (pin_names (offset 0.508))
       (exclude_from_sim no) (in_bom yes) (on_board yes)
       (property "Reference" "R" (at 0 6.35 0) (effects (font (size 1 1))))
-      (property "Value" "101k" (at 0 -6.35 0) (effects (font (size 1 1))))
+      (property "Value" "102k" (at 0 -6.35 0) (effects (font (size 1 1))))
       (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 0 0 0) (effects (font (size 1 1)) (hide yes)))
       (property "Datasheet" "" (at 0 0 0) (effects (font (size 1 1)) (hide yes)))
       (symbol "R22_0_1"
@@ -1580,7 +1580,7 @@
     (exclude_from_sim no) (in_bom yes) (on_board yes)
     (dnp no) (uuid "7bb85bc4-0a4e-5234-8d80-055f2c224e26")
     (property "Reference" "R22" (at 104.14 207.01 0) (effects (font (size 1 1))))
-    (property "Value" "101k" (at 104.14 219.71 0) (effects (font (size 1 1))))
+    (property "Value" "102k" (at 104.14 219.71 0) (effects (font (size 1 1))))
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 104.14 213.36 0) (effects (font (size 1 1)) (hide yes)))
     (property "Datasheet" "" (at 0 0 0) (effects (font (size 1 1)) (hide yes)))
     (pin "1" (uuid "3bc180e7-2ae4-5e8c-9d8f-4507d6fe07b2"))

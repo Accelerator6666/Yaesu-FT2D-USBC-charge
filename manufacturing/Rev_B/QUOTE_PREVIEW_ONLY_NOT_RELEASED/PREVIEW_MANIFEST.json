@@ -1,6 +1,6 @@
 {
   "status": "QUOTE_AND_VISUAL_PREVIEW_ONLY__NO_FAB_OR_SMT_APPROVAL",
-  "generated_utc": "2026-10-26T07:34:29+00:00",
+  "generated_utc": "2026-10-26T07:45:42+00:00",
   "pcb": "hardware/Rev_B/FT2D_PD20V_12V5_3A_评审原理图.kicad_pcb",
   "schematic": "hardware/Rev_B/FT2D_PD20V_12V5_3A_评审原理图.kicad_sch",
   "ERC_DRC_counts": {
@@ -14,12 +14,12 @@
   "distinct_candidate_LCSC_codes": 37,
   "electrical_thermal_SMTPreview_PD_NVM_signoffs": "NOT APPROVED",
   "files_sha256": {
-    "FT2D_RevB_4L_Gerber_Drill_QUOTE_ONLY.zip": "d2492da4b371d40b767af3e7b6eb4b1ae5e6adf450594d7940042a7700cb0cc3",
-    "FT2D_RevB_JLC_BOM_QUOTE_ONLY_NOT_APPROVED.csv": "355b4596fe4f4509c5567ebc30244bf95162eacbf4c7af2374e5cb2ca2e8a434",
+    "FT2D_RevB_4L_Gerber_Drill_QUOTE_ONLY.zip": "4faa18f508fc807539c1d8395bb7ffc64b467d9d53bbcdde8599cb020128553f",
+    "FT2D_RevB_JLC_BOM_QUOTE_ONLY_NOT_APPROVED.csv": "492659a55d63f6dcb60b4288241a118f20a0de86c88368d5df01a07c697082d9",
     "FT2D_RevB_JLC_CPL_QUOTE_ONLY_NOT_APPROVED.csv": "a95ff320b8f2983c4fe4d69b579eab15a1f2db39bd7a1ca34c999dca0b71f55a"
   },
   "source_sha256": {
-    "hardware/Rev_B/FT2D_PD20V_12V5_3A_评审原理图.kicad_pcb": "10c1e9d18a50feb573103e7607b311d75a9adae378d4b4fe935240a67de80acb",
-    "hardware/Rev_B/FT2D_PD20V_12V5_3A_评审原理图.kicad_sch": "22ac6a886ef99e4899e4b2daa6cc1b595459ca67f5cfa4284450b4219b810a37"
+    "hardware/Rev_B/FT2D_PD20V_12V5_3A_评审原理图.kicad_pcb": "82d6c387218c15d1b02018a969602e6d93b113948ffd7d879e850b1e8dd56cb3",
+    "hardware/Rev_B/FT2D_PD20V_12V5_3A_评审原理图.kicad_sch": "3352ddeaa486b6b8cd705f97a50d9e514f659ca41800a746c9b92e334b0fafce"
   }
 }

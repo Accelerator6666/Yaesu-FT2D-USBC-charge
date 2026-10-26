@@ -17,7 +17,7 @@
 
 | 位号 | 设计参数 | 候选 MPN / C-code | 待明确核对 |
 | --- | --- | --- | --- |
-| **R22** | **101 kΩ，0603** | KOA [`RN73H1JTTD1013F100` / C4016651](https://www.lcsc.com/product-detail/C4016651.html) | 查到**原阻值**，不应把电路值随意改成 100 kΩ；但 LCSC 物料未证明 JLC 可代贴片、实时库存及采购量 |
+| **R22** | **102 kΩ，0603，±0.1%** | Yageo [`RT0603BRD07102KL` / C861068](https://jlcpcb.com/partdetail/YAGEO-RT0603BRD07102KL/C861068) | **经用户授权兼容换料**：由原 101 kΩ 改为 102 kΩ，嘉立创目录标注 SMT；按 VOVLO=1.2V×(1+R22/10kΩ)，标称断开电压 13.32→13.44 V（+0.12 V）；工厂实时库存、OVLO 容差/动态表现仍待确认 |
 | D1 | 原 ST ESD TVS、DFN1610-2 | ST [`ESDA25P35-1U1M` / C1974707](https://www.lcsc.com/product-detail/C1974707.html) | Pin 1 极性、反向工作电压、焊盘尺寸 |
 | D2 | 原 ST `ESDA25W`、SOT-323 | ST [`ESDA25W` / C2935152](https://www.lcsc.com/product-detail/C2935152.html) | 3 引脚方向、封装与反向参数 |
 | C1/C2 | 1 µF、0603、原 6.3 V | TDK [`C1608X7R1A105K080AC` / C5332007](https://www.lcsc.com/product-detail/C5332007.html)（10 V） | 额定电压提升不等于偏压有效容量已核实 |
@@ -32,7 +32,7 @@
 
 ## 必须在嘉立创订单前完成的现场验证
 
-1. 用 JLCPCB PCB Assembly 的真实 BOM 解析结果核对 **37 种 C-code**：每行显示正确 MPN、封装、生产状态、备货/扩展料费和能否贴装；缺货的重新选型及必要时改封装。优先检查 `C4016651` 是否受理 **101 kΩ**，C26 `C415535` 是否与原焊盘匹配，以及 J1 通孔屏蔽固定脚是否需要插件/手焊。
+1. 用 JLCPCB PCB Assembly 的真实 BOM 解析结果核对 **37 种 C-code**：每行显示正确 MPN、封装、生产状态、备货/扩展料费和能否贴装；缺货的重新选型及必要时改封装。优先检查 R22 `C861068` 的实际可购/可贴状态、C26 `C415535` 是否与原焊盘匹配，以及 J1 通孔屏蔽固定脚是否需要插件/手焊。
 2. 在真实 JLC 贴装预览中逐颗核对 **53 个**坐标与角度，特别是 J1 `−90°`、U1/U2/U3/Q1 的 Pin 1、D1/D2、C18/C23 有极性标志、L1 朝向。**不要假设 KiCad 负 Y 一定能正确显示**；线上预览有异则修正 CPL，并同步存档理由。
 3. 用厂家额定曲线签字：F1 3 A 熔丝 90°C 降额、C18 105°C vs 原 135°C、C23 105°C/ESR 28 mΩ vs 原 125°C/24 mΩ、电容随 DC-bias 降容及 Buck 环路稳定性。
 4. 核对 J3 电台插头线束的机械拉力保护、极性、短路保护，以及输入 20 V PDO NVM 配置和首板不接电台的电子负载测试方案。
@@ -42,6 +42,6 @@
 
 - [JLC 官方 KiCad 10 的 BOM / CPL 列名与在线预览指南](https://jlcpcb.com/help/article/how-to-generate-the-bom-and-centroid-file-from-kicad)
 - [JLC PCB Assembly FAQ（需进一步核实通孔+SMT 混合工艺）](https://jlcpcb.com/help/article/pcb-assembly-faqs)
-- [LCSC KOA 101 kΩ 精确原值 C4016651](https://www.lcsc.com/product-detail/C4016651.html)；[另一颗 KOA 0.1% 101 kΩ C4027009](https://www.lcsc.com/product-detail/C4027009.html) 为备选，未自动换料
+- [嘉立创 Yageo 102 kΩ ±0.1% / C861068（标注 SMT）](https://jlcpcb.com/partdetail/YAGEO-RT0603BRD07102KL/C861068)，替换原 101 kΩ / C4016651；在线库存须再次确认
 
 选料检索日期：2026-10-26。库存、可代贴片标记、JLC 订单价格具有时效性，不能将文档中的历史数据当成即时承诺。
