@@ -35,6 +35,14 @@ if [[ ! -f "${approved_bom}" || ! -f "${approved_cpl}" ]]; then
     echo 'NO-GO: JLC-part-number-complete BOM_APPROVED.csv and visually checked CPL_APPROVED.csv required.' >&2
     exit 3
 fi
+
+# Validate actual mapping, not just that approved-looking filenames exist.
+native_pos="${preflight_dir}/kicad_native_smt_positions.csv"
+kicad-cli pcb export pos --format csv --units mm --side front --smd-only --exclude-dnp \
+    -o "${native_pos}" "${project_dir}/${base}.kicad_pcb"
+python3 "${repo_root}/engineering_tools/validate_jlc_smt_release_rev_b.py" \
+    "${approved_bom}" "${approved_cpl}" "${native_pos}"
+
 if [[ ! -f "${signoff}" ]]; then
     echo 'NO-GO: engineering signoff missing (3A copper, return paths, footprint land patterns, and assembly).' >&2
     exit 3

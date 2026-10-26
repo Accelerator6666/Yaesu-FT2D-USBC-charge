@@ -4,7 +4,7 @@
 
 此目录 `REVIEW_ONLY_NOT_FOR_FAB` 已包含采购/坐标核对数据、完整 4 层 Gerber 和 Excellon 钻孔 **QA 预览**。**不要直接将 QA 文件上传为制造订单**：尚无 BOM/CPL 完整签核与 3 A 工程批准。真正放行条件见 `../../hardware/Rev_B/README.md`。
 
-放行门禁脚本：`../../engineering_tools/export_jlcpcb_release_rev_b.sh`。它会先执行 ERC/DRC/Parity 检查，且要求完整的 `BOM_APPROVED.csv`、已目视确认的 `CPL_APPROVED.csv` 与三项工程签核。已验证 **ERC 0 / DRC violations 0 / unconnected 0 / parity 0**；下一道门禁因**尚未取得全板料号及工程签核**而拒绝创建可下单包。
+放行门禁脚本：`../../engineering_tools/export_jlcpcb_release_rev_b.sh`。它会先执行 ERC/DRC/Parity 检查，要求完整的 `BOM_APPROVED.csv`、已目视确认的 `CPL_APPROVED.csv` 与三项工程签核，并以 `validate_jlc_smt_release_rev_b.py` **逐位号检查**有无漏件、多件、重复件、无 LCSC 号、错误坐标和非顶面装配。已验证 **ERC 0 / DRC violations 0 / unconnected 0 / parity 0**；下一道门禁因**尚未取得全板料号及工程签核**而拒绝创建可下单包。
 
 ## 当前可用的非下单文件
 
