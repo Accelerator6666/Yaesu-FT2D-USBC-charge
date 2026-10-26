@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="870" viewBox="0 0 1500 870" role="img" aria-label="FT2D Rev P perfboard prototype DC wiring and output overvoltage protection">
+  <defs>
+    <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L10 5 L0 10Z" fill="#D83131"/>
+    </marker>
+    <style>
+      text{font-family:"DejaVu Sans","Arial",sans-serif;fill:#15283A}
+      .title{font-size:35px;font-weight:700}
+      .lead{font-size:18px;fill:#526B7E}
+      .block{fill:#FFFFFF;stroke:#5A7591;stroke-width:2.5;rx:18}
+      .blue{fill:#E7F1FC}
+      .teal{fill:#E3F6F4}
+      .yellow{fill:#FFF5DD}
+      .green{fill:#E8F6E9}
+      .h{font-size:23px;font-weight:700}
+      .sub{font-size:17px;fill:#385065}
+      .small{font-size:15px;fill:#465D71}
+      .plus{fill:none;stroke:#D83131;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .gnd{fill:none;stroke:#28384A;stroke-width:5;stroke-linecap:round}
+      .test{fill:#FFFFFF;stroke:#1976D2;stroke-width:3}
+      .test-text{font-size:15px;font-weight:700;fill:#19599A}
+    </style>
+  </defs>
+
+  <rect width="1500" height="870" fill="#F8FAFD"/>
+  <text class="title" x="60" y="58">FT2D Rev P | Perfboard + power modules</text>
+  <text class="lead" x="62" y="93">Module-level DC wiring only (not physical pad placement). Target: 12.0 V / 3 A. Bench-test before FT2D use.</text>
+
+  <!-- Source / PD -->
+  <rect class="block blue" x="55" y="165" width="217" height="184"/>
+  <text class="h" x="82" y="210">USB-C PD</text>
+  <text class="h" x="82" y="245">Power source</text>
+  <text class="sub" x="82" y="284">20 V / 3 A PDO</text>
+  <text class="small" x="82" y="316">Cable rated 3 A+</text>
+
+  <rect class="block teal" x="334" y="165" width="240" height="184"/>
+  <text class="h" x="360" y="208">PDS1</text>
+  <text class="h" x="360" y="243">PD trigger board</text>
+  <text class="sub" x="360" y="282">Adafruit #5807, 20 V</text>
+  <text class="small" x="360" y="315">V+ / GND (set jumpers)</text>
+
+  <rect class="block yellow" x="701" y="165" width="289" height="184"/>
+  <text class="h" x="725" y="208">REG1</text>
+  <text class="h" x="725" y="243">BUCK module</text>
+  <text class="sub" x="725" y="280">20 V to fixed 12.0 V</text>
+  <text class="small" x="725" y="311">P1: Pololu D42V55F12</text>
+  <text class="small" x="725" y="333">VIN / VOUT / GND</text>
+
+  <rect class="block green" x="1080" y="165" width="357" height="184"/>
+  <text class="h" x="1104" y="208">OVP1</text>
+  <text class="h" x="1104" y="242">Overvoltage cutoff</text>
+  <text class="sub" x="1104" y="279">Trip target: 14.3 V</text>
+  <text class="small" x="1104" y="309">INPUT: IN+ / IN-</text>
+  <text class="small" x="1104" y="331">OUTPUT: OUT+ / OUT-</text>
+
+  <!-- DC power route positive -->
+  <path class="plus" d="M272 245 H321" marker-end="url(#arrow-red)"/>
+  <path class="plus" d="M574 245 H604"/>
+  <rect x="604" y="222" width="68" height="46" rx="9" fill="#FCE7E7" stroke="#D83131" stroke-width="2"/>
+  <text x="638" y="244" font-size="17" text-anchor="middle" font-weight="700" fill="#9D1C1C">F1</text>
+  <text x="638" y="261" font-size="13" text-anchor="middle" fill="#9D1C1C">3A T</text>
+  <path class="plus" d="M672 245 H688" marker-end="url(#arrow-red)"/>
+  <path class="plus" d="M990 245 H1067" marker-end="url(#arrow-red)"/>
+
+  <!-- Probe points at the edges of the positive feed -->
+  <circle class="test" cx="591" cy="245" r="10"/>
+  <text class="test-text" x="591" y="209" text-anchor="middle">TP1</text>
+  <text class="small" x="591" y="190" text-anchor="middle">20 V</text>
+  <circle class="test" cx="1032" cy="245" r="10"/>
+  <text class="test-text" x="1032" y="208" text-anchor="middle">TP2</text>
+  <text class="small" x="1032" y="189" text-anchor="middle">12 V</text>
+
+  <!-- Output fuse & FT2D; bottom is to bench load first -->
+  <path class="plus" d="M1260 349 V390"/>
+  <rect x="1230" y="390" width="60" height="56" rx="9" fill="#FCE7E7" stroke="#D83131" stroke-width="2"/>
+  <text x="1260" y="413" text-anchor="middle" font-size="18" font-weight="700" fill="#9D1C1C">F2</text>
+  <text x="1260" y="433" text-anchor="middle" font-size="14" fill="#9D1C1C">4A T</text>
+  <path class="plus" d="M1260 446 V541" marker-end="url(#arrow-red)"/>
+  <circle class="test" cx="1260" cy="490" r="10"/>
+  <text class="test-text" x="1295" y="492">TP3 (load)</text>
+
+  <rect class="block blue" x="1080" y="550" width="357" height="151"/>
+  <text class="h" x="1105" y="588">DC LOAD, then FT2D</text>
+  <text class="sub" x="1105" y="622">E-DC-6: red/white-black = +</text>
+  <text class="sub" x="1105" y="649">Black = - (meter-verify!)</text>
+  <text class="small" x="1105" y="678">Bench load + OVP before radio</text>
+
+  <!-- Heavy return conductor -->
+  <path class="gnd" d="M450 349 V723 H1260 V701"/>
+  <path class="gnd" d="M845 349 V723"/>
+  <path class="gnd" d="M1140 349 V365 H1050 V723"/>
+  <text x="509" y="713" font-size="16" fill="#26394B">GND / negative return: 18 AWG wire, never thin perfboard copper!</text>
+  <text class="small" x="450" y="751">Check actual module labels and pinout before wiring. All modules are shown conceptually.</text>
+
+  <rect x="56" y="781" width="1381" height="64" rx="12" fill="#FFF1F0" stroke="#E77865" stroke-width="2"/>
+  <text x="76" y="806" font-size="20" font-weight="700" fill="#9B2929">WARNING: Never connect 20 V directly to FT2D! Verify OVP disconnects before reaching 16 V at load.</text>
+  <text x="76" y="829" font-size="16" fill="#8E3930">P0 economy buck: dummy load only. P1 reference parts: NOT approved for radio connection without bench tests.</text>
+</svg>
