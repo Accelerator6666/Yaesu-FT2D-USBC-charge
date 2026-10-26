@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="855" viewBox="0 0 1500 855" role="img" aria-label="FT2D Rev P-D 12 volt USB-C PD direct power and independent overvoltage protection wiring diagram">
+  <defs>
+    <style>
+      text{font-family:"DejaVu Sans","Arial",sans-serif;fill:#183044}
+      .title{font-size:35px;font-weight:700}
+      .hint{font-size:18px;fill:#587085}
+      .box{stroke:#53718F;stroke-width:2.5;rx:15}
+      .blue{fill:#E7F1FC}
+      .teal{fill:#DFF3F1}
+      .green{fill:#E7F5E7}
+      .h{font-size:24px;font-weight:700}
+      .sub{font-size:17px;fill:#3F566B}
+      .small{font-size:15px;fill:#4A6175}
+      .hot{fill:none;stroke:#D83232;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .gnd{fill:none;stroke:#29394B;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+      .test{fill:#FFFFFF;stroke:#1379CE;stroke-width:3}
+      .tlabel{font-size:17px;font-weight:700;fill:#1F65AC}
+    </style>
+    <marker id="red-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L9 4.5 L0 9Z" fill="#D83232"/>
+    </marker>
+  </defs>
+
+  <rect width="1500" height="855" fill="#F8FAFD"/>
+  <text class="title" x="55" y="59">FT2D Rev P-D | 12 V PD direct, no BUCK</text>
+  <text class="hint" x="57" y="92">TA3005U C1/C2 single-port 12 V / 3 A; verify physical label, PD negotiation and 3 A load response.</text>
+
+  <!-- Three independent assembled power modules / destination -->
+  <rect class="box blue" x="55" y="184" width="235" height="210"/>
+  <text class="h" x="79" y="224">TA3005U</text>
+  <text class="sub" x="79" y="267">USB-C port C1/C2</text>
+  <text class="sub" x="79" y="303">12 V / 3 A PDO</text>
+  <text class="small" x="79" y="341">C3 NOT suitable</text>
+  <text class="small" x="79" y="368">Use one port at a time</text>
+
+  <rect class="box teal" x="350" y="184" width="270" height="210"/>
+  <text class="h" x="375" y="224">PDS1: #5807</text>
+  <text class="sub" x="375" y="266">Adafruit HUSB238</text>
+  <text class="sub" x="375" y="303">Request 12 V / 3 A</text>
+  <text class="small" x="375" y="340">V+  /  GND</text>
+  <text class="small" x="375" y="369">Set solder jumpers!</text>
+
+  <rect class="box green" x="790" y="184" width="322" height="210"/>
+  <text class="h" x="813" y="224">OVP1: Protect</text>
+  <text class="sub" x="813" y="267">Independent cutoff</text>
+  <text class="sub" x="813" y="303">Trip target 14.3 V</text>
+  <text class="small" x="813" y="340">IN+/- : from PD board</text>
+  <text class="small" x="813" y="368">OUT+/- : to output</text>
+
+  <rect class="box blue" x="1190" y="560" width="255" height="160"/>
+  <text class="h" x="1211" y="601">LOAD first</text>
+  <text class="sub" x="1211" y="634">Then FT2D</text>
+  <text class="small" x="1211" y="669">E-DC-6: + / -</text>
+  <text class="small" x="1211" y="695">Verify polarity!</text>
+
+  <!-- Plus path: PD source - trigger - OVP - fuse - load -->
+  <path class="hot" d="M290 283 H338" marker-end="url(#red-arrow)"/>
+  <path class="hot" d="M620 283 H778" marker-end="url(#red-arrow)"/>
+  <circle class="test" cx="707" cy="283" r="10"/>
+  <text class="tlabel" x="707" y="240" text-anchor="middle">TP1  12 V</text>
+
+  <path class="hot" d="M995 394 V457"/>
+  <circle class="test" cx="995" cy="429" r="10"/>
+  <text class="tlabel" x="1020" y="428">TP2</text>
+  <rect x="962" y="457" width="66" height="56" rx="9" fill="#FDE9E9" stroke="#D83232" stroke-width="2.5"/>
+  <text x="995" y="481" font-size="18" font-weight="700" text-anchor="middle">F2</text>
+  <text x="995" y="502" font-size="15" text-anchor="middle">4A T</text>
+  <path class="hot" d="M995 513 V587 H1178" marker-end="url(#red-arrow)"/>
+  <circle class="test" cx="1147" cy="587" r="10"/>
+  <text class="tlabel" x="1147" y="553" text-anchor="middle">TP3</text>
+
+  <!-- GND returns directly by wire; the concept drawing is not a pin placement drawing -->
+  <path class="gnd" d="M486 394 V762 H1315 V720"/>
+  <path class="gnd" d="M857 394 V762"/>
+  <text class="sub" x="558" y="751">Common GND return: 18 AWG insulated wire, NOT perfboard copper strips</text>
+
+  <rect x="55" y="798" width="1390" height="40" rx="9" fill="#FFF0EE" stroke="#E47A69" stroke-width="1.8"/>
+  <text x="75" y="825" font-size="17" font-weight="700" fill="#A12D2D">STOP: 12 V PD setting can be wrong. Test OVP cutoff &lt;16 V, polarity, 3 A heat and load transients before connecting radio.</text>
+</svg>

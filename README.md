@@ -4,7 +4,7 @@
 
 ## 优先推进：Rev P 低成本模块＋洞洞板路线（2026-10-26）
 
-由于嘉立创 SMT 报价较高，现新增**不依赖 PCB 打板和 SMT 代贴**的 [Rev P 模块／洞洞板试验方案](prototypes/Rev_P_Perfboard/README.md)，附 [带保险丝与独立过压保护的接线图](prototypes/Rev_P_Perfboard/wiring.svg) 和 [分阶段台架测试及放行记录](prototypes/Rev_P_Perfboard/TEST_PLAN.md)。选择 20 V / 3 A PD 触发成品板、成品 20→12 V 降压模块、独立 OVP、保险丝与 E-DC-6 尾线。**当前仅完成设计，尚未购买和实测，严禁直接接电台。**
+由于嘉立创 SMT 报价较高，现新增**不依赖 PCB 打板和 SMT 代贴**的 [Rev P 模块／洞洞板试验方案](prototypes/Rev_P_Perfboard/README.md)。用户提供的 **TA3005U 产品参数截图**显示 C1/C2 支持 **12 V / 3 A**，故**优先使用 12 V PD 直通方案**，无需降压模块：参见 [12 V 直通接线图](prototypes/Rev_P_Perfboard/wiring_12v_direct.svg) 和 [直通台架放行清单](prototypes/Rev_P_Perfboard/TEST_PLAN_12V_DIRECT.md)。原 [20 V→12 V 降压备选接线图](prototypes/Rev_P_Perfboard/wiring.svg) 与 [测试方案](prototypes/Rev_P_Perfboard/TEST_PLAN.md) 保留以备直通 3 A 动态能力不足时使用。两条路径均需**独立 OVP、保险丝及 E-DC-6 极性核对**。**当前仅完成设计和规格截图核对，尚未购买和实测，严禁直接接电台。**
 
 Rev B 作为后续小型化 PCB 参考版本原样保留；此前嘉立创 **5 片 PCB 待付款订单**不受本次设计文件影响，本项目没有操作付款或撤单。
 
@@ -12,7 +12,7 @@ Rev B 作为后续小型化 PCB 参考版本原样保留；此前嘉立创 **5 �
 
 嘉立创用的 [BOM/CPL 原生导出及 SMT 供料评审](manufacturing/Rev_B/README.md) 已更新到 **57 行原生 BOM / 53 个实际 SMT 坐标 / 53 个候选 JLC 物料号（37 种料）**；候选 JLC 四列 BOM、五列 CPL 与逐项来源追溯表都在 `REVIEW_ONLY_NOT_FOR_FAB`，并已通过 53/53 本地 BOM/CPL 位号和坐标审计。**R22 已由 101 kΩ 兼容改值为 102 kΩ（JLC SMT C861068），OVLO 标称值相应提高约 0.12 V，工厂实时库存仍需确认。4 层 Gerber、焊膏、钻孔已随本轮源工程重新导出。** 另新增 [嘉立创报价/贴片在线预览三件套](manufacturing/Rev_B/QUOTE_PREVIEW_ONLY_NOT_RELEASED/README_FIRST.md)：平铺 Gerber+钻孔 ZIP、53 位号 BOM 和 CPL，可以立即上传**预览/询价**，仍不能直接确认订单。同步生成了 [U3 3A 铜线保守损耗估算](manufacturing/Rev_B/PREFLIGHT/power_path_screening.json) 和 [STUSB4500 NVM/首板上电方案](manufacturing/Rev_B/PD_NVM_AND_FIRST_POWER_ON_PLAN.md)。尤其注意 STUSB4500 **出厂 20V PDO 只有 1A，且默认 5V 时可使能电源路径**，必须在首板测试前重新配置并验证。**当前仍 NO-GO，不要直接下单**：待完成 3 A 电热及 Buck 回路复核、全部候选元件真实 SMT 供货/兼容性确认、JLC 贴片预览和工程签核。正式放行脚本继续拦截未签核订单；原始评审 PCB 的 [基线检查](FAB_READINESS.md) 保留。
 
-## 目标参数
+## 原 Rev B 集成 PCB 的目标参数（不适用于 Rev P-D 直通版）
 
 | 项目 | 规格 |
 | --- | --- |

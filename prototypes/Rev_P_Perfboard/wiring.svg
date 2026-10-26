@@ -24,7 +24,7 @@
   </defs>
 
   <rect width="1500" height="870" fill="#F8FAFD"/>
-  <text class="title" x="60" y="58">FT2D Rev P | Perfboard + power modules</text>
+  <text class="title" x="60" y="58">FT2D Rev P-B | 20 V input + BUCK</text>
   <text class="lead" x="62" y="93">Module-level DC wiring only (not physical pad placement). Target: 12.0 V / 3 A. Bench-test before FT2D use.</text>
 
   <!-- Source / PD -->
