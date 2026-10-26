@@ -75,7 +75,7 @@
   <path class="plus" d="M1260 349 V390"/>
   <rect x="1230" y="390" width="60" height="56" rx="9" fill="#FCE7E7" stroke="#D83131" stroke-width="2"/>
   <text x="1260" y="413" text-anchor="middle" font-size="18" font-weight="700" fill="#9D1C1C">F2</text>
-  <text x="1260" y="433" text-anchor="middle" font-size="14" fill="#9D1C1C">4A T</text>
+  <text x="1260" y="433" text-anchor="middle" font-size="12" fill="#9D1C1C">4A ATO</text>
   <path class="plus" d="M1260 446 V541" marker-end="url(#arrow-red)"/>
   <circle class="test" cx="1260" cy="490" r="10"/>
   <text class="test-text" x="1295" y="492">TP3 (load)</text>

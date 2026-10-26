@@ -17,7 +17,7 @@
 
 ## 目标接法
 
-`TA3005U C1/C2 → USB-C 3A+ 线 → Adafruit #5807 V+ → PN Labs Protect IN+ → Protect OUT+ → F2 (4A T) → 电子负载，最后才接 E-DC-6/FT2D`
+`TA3005U C1/C2 → USB-C 3A+ 线 → Adafruit #5807 V+ → PN Labs Protect IN+ → Protect OUT+ → F2 (Littelfuse 0287004.L, 4A ATO) → 电子负载，最后才接 E-DC-6/FT2D`
 
 所有负极：`#5807 GND → Protect IN−`；`Protect OUT− → 电子负载/FT2D 负极`。采用 **18 AWG 独立绝缘导线**，洞洞板仅机械固定。不装降压模块，不装 20 V 输入保险丝 F1。
 

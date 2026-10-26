@@ -4,7 +4,7 @@
 
 ## 优先推进：Rev P 低成本模块＋洞洞板路线（2026-10-26）
 
-由于嘉立创 SMT 报价较高，现新增**不依赖 PCB 打板和 SMT 代贴**的 [Rev P 模块／洞洞板试验方案](prototypes/Rev_P_Perfboard/README.md)。用户提供的 **TA3005U 产品参数截图**显示 C1/C2 支持 **12 V / 3 A**，故**优先使用 12 V PD 直通方案**，无需降压模块：参见 [12 V 直通接线图](prototypes/Rev_P_Perfboard/wiring_12v_direct.svg) 和 [直通台架放行清单](prototypes/Rev_P_Perfboard/TEST_PLAN_12V_DIRECT.md)。原 [20 V→12 V 降压备选接线图](prototypes/Rev_P_Perfboard/wiring.svg) 与 [测试方案](prototypes/Rev_P_Perfboard/TEST_PLAN.md) 保留以备直通 3 A 动态能力不足时使用。两条路径均需**独立 OVP、保险丝及 E-DC-6 极性核对**。**当前仅完成设计和规格截图核对，尚未购买和实测，严禁直接接电台。**
+由于嘉立创 SMT 报价较高，现新增**不依赖 PCB 打板和 SMT 代贴**的 [Rev P 模块／洞洞板试验方案](prototypes/Rev_P_Perfboard/README.md)。用户提供的 **TA3005U 产品参数截图**显示 C1/C2 支持 **12 V / 3 A**，故**优先使用 12 V PD 直通方案**，无需降压模块：参见 [采购与装配清单](prototypes/Rev_P_Perfboard/PROCUREMENT_REV_PD.md)、[12 V 直通接线图](prototypes/Rev_P_Perfboard/wiring_12v_direct.svg) 和 [直通台架放行清单](prototypes/Rev_P_Perfboard/TEST_PLAN_12V_DIRECT.md)。原 [20 V→12 V 降压备选接线图](prototypes/Rev_P_Perfboard/wiring.svg) 与 [测试方案](prototypes/Rev_P_Perfboard/TEST_PLAN.md) 保留以备直通 3 A 动态能力不足时使用。两条路径均需**独立 OVP、保险丝及 E-DC-6 极性核对**。**当前仅完成设计和规格截图核对，尚未购买和实测，严禁直接接电台。**
 
 Rev B 作为后续小型化 PCB 参考版本原样保留；此前嘉立创 **5 片 PCB 待付款订单**不受本次设计文件影响，本项目没有操作付款或撤单。
 

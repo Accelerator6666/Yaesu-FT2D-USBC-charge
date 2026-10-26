@@ -65,7 +65,7 @@
   <text class="tlabel" x="1020" y="428">TP2</text>
   <rect x="962" y="457" width="66" height="56" rx="9" fill="#FDE9E9" stroke="#D83232" stroke-width="2.5"/>
   <text x="995" y="481" font-size="18" font-weight="700" text-anchor="middle">F2</text>
-  <text x="995" y="502" font-size="15" text-anchor="middle">4A T</text>
+  <text x="995" y="502" font-size="13" text-anchor="middle">4A ATO</text>
   <path class="hot" d="M995 513 V587 H1178" marker-end="url(#red-arrow)"/>
   <circle class="test" cx="1147" cy="587" r="10"/>
   <text class="tlabel" x="1147" y="553" text-anchor="middle">TP3</text>

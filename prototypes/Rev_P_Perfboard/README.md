@@ -14,7 +14,7 @@
 
 **备选 Rev P-B** 保留原来固定 20 V / ≥3 A（≥60 W）触发→降压到 12 V 的方案；如果 P-D 负载阶跃、接头温升或稳定性不合格，就退回 P-B 路线。
 
-**当前首选文件：** [12 V 直通接线图](wiring_12v_direct.svg)、[12 V 直通验收清单](TEST_PLAN_12V_DIRECT.md)。备选：[20 V 降压接线图](wiring.svg)、[20 V 降压测试方案](TEST_PLAN.md)。
+**当前首选文件：** [采购与装配清单](PROCUREMENT_REV_PD.md)、[12 V 直通接线图](wiring_12v_direct.svg)、[12 V 直通验收清单](TEST_PLAN_12V_DIRECT.md)。备选：[20 V 降压接线图](wiring.svg)、[20 V 降压测试方案](TEST_PLAN.md)。
 
 ## 两个成本等级，不能混用放行标准
 
@@ -35,9 +35,9 @@ P-D 比 P-B 少一个开关电源和输入侧保险丝，减少焊接与射频�
 | PDS1（通用低价备选） | **CH224K 已装配 20 V PD 触发板** | 必须有真实品牌/卖家 SKU、USB-C 插座及清楚的 `VOUT+ / GND`，证明板级走线/焊盘可连续 ≥3 A；不单买裸芯片 | [WCH CH224 原厂芯片资料](https://www.wch-ic.com/downloads/CH224DS1.PDF.html?type=en)；**尚未核对特定商品，不作为直接购买型号** |
 | REG1（P1） | **Pololu D42V55F12**，#5577 | 固定 12 V ±3%，输入涵盖 20 V；厂家给出 3.5–6.5 A 典型最大连续输出范围，实际值需按散热/输入电压确认 | [Pololu 原厂规格](https://www.pololu.com/product/5577)；品牌参考件，不保证当地库存 |
 | REG1（P0） | **XLSEMI XL4016E1 预装降压模块** | 输入覆盖 20 V，调压范围覆盖 12 V，实测 3 A/30 min 热性能、启动尖峰、纹波及器件真假；需锁住调压旋钮 | [XLSEMI 原厂芯片数据](https://www.xlsemi.com/datasheet/XL4016-EN.pdf)。**芯片额定值不等于网上模块持续能力；未通过完整验收不得接电台** |
-| OVP1 | **PN Labs Protect**（5–30 V，SKU 9800） | **置于降压模块后面**、电子负载/电台前面，校准到**14.3 V**附近切断；有实际过压断开测试结果；红正黑负输入/输出按模块丝印核对 | [PN Labs 官方说明及公式](https://pnlabs.ca/shop/protect-5-30v-dc-power-protection-module)；可改用其他有同等可验证快速切断能力的成品 OVP，不可用普通 TVS/低压断电板直接替代 |
+| OVP1 | **PN Labs Protect**（5–30 V，SKU 9800） | **P-D 放在触发板后，P-B 放在降压模块后**，两条路线都在电子负载/电台前面；校准到 **14.3 V** 附近切断；核对 XT60 输入/输出方向和实际过压断开波形 | [PN Labs 官方说明及公式](https://pnlabs.ca/shop/protect-5-30v-dc-power-protection-module)；可改用其他经实测同等快速断开的成品 OVP，不可用普通 TVS/欠压电池板直接替代 |
 | F1（仅 P-B） | **20 V 输入保险丝：3 A 延时型**和保险丝座 | 直流额定电压 ≥32 V、分断能力满足 PD 源；规格经启动浪涌测试复核 | P-D 不需要此位置额外串联保险丝 |
-| F2 | **12 V 输出保险丝：4 A 延时型**和保险丝座 | 直流额定电压 ≥32 V，实际升温、负载阶跃和短路测试后复核；不能代替 OVP。注意实际 3 A PD 源可能先限流，保险丝不能保证先于电源保护动作 | 候选，未指定不可替代的厂商料号 |
+| F2 | **Littelfuse 0287004.L：ATO/ATC 4 A、32 V DC 车用插片保险丝**；保险丝座 **Littelfuse FHAC0001SXJ** | 保险丝座为 32 V DC、16 AWG 引线的密封 ATO 规格；实际 3 A 连续压降、温升和短路行为需复核；**它并非精密 3 A 限流或过压保护** | [4 A 保险丝](https://www.digikey.com/en/products/detail/littelfuse-inc/0287004-L/3672096)、[FHAC 系列原厂资料](https://www.littelfuse.com/assetdocs/littelfuse-fuse-holder-ato-fhac-datasheet.pdf?assetguid=272e0b1a-a576-4173-8740-c1eb469efd79) |
 | J_OUT | 八重洲 E-DC-6 兼容电源线，尽量采用已做好的尾线 | 原厂规定带红线/白黑线为正极、黑线负极；**最终仍须逐线做万用表通断测量**，不能凭插头外观猜测 | [FT2DR/DE 官方使用说明](https://yaesu.com/Files/DFDF4D53-1B78-7375-E6C7A6E4B192BE13/FT2DR_DE_EH060M203_1608Y-EM-1.pdf) |
 | W1 | 红/黑 **18 AWG** 柔性电源线、热缩管和应力消除 | 载流段尽量短（目标每段 <20 cm）；机械固定，绝缘完整；**不借用洞洞板细铜环承载 3 A** | 通用耗材 |
 | BASE | ≥120×80 mm FR-4 洞洞板、绝缘柱、散热和外壳 | 只作为机械固定和低电流辅助连接；模块之间的 **+12V/GND** 采用单独电线点到点连接 | 按实际模块外形二次选尺寸 |
@@ -47,7 +47,7 @@ P-D 比 P-B 少一个开关电源和输入侧保险丝，减少焊接与射频�
 
 1. TA3005U **C1 或 C2** → 额定 ≥3 A USB-C 线 → 按上表配置的 **Adafruit #5807**。
 2. `#5807 V+ → OVP1.IN+`；`#5807 GND → OVP1.IN−`。
-3. `OVP1.OUT+ → F2(4A T) → E-DC-6 正极`；`OVP1.OUT− → E-DC-6 负极`。
+3. `OVP1.OUT+ → F2(4A ATO) → E-DC-6 正极`；`OVP1.OUT− → E-DC-6 负极`。
 4. 测点定义：`TP1 = 触发板输出(12 V)`、`TP2 = OVP 输出、F2 前`、`TP3 = F2 后/电台端`，所有测点的参考端为各自 GND。
 5. 不使用 P-B 的 REG1（Buck）和 F1；**不可把 #5807 配置成 20 V 然后在无降压路径下接到 OVP 前端**。OVP 必须独立验证能对设置错误/异常 20 V 输入快速断开；不足以通过测试时停留在电子负载阶段。
 
@@ -64,7 +64,7 @@ P-D 比 P-B 少一个开关电源和输入侧保险丝，减少焊接与射频�
 
 对 **Adafruit #5807 + Pololu D42V55F12** 这一 **P-B1** 组合，第一条线路实际写成：
 
-`#5807 V+ → F1 → Pololu VIN`，`#5807 GND → Pololu GND`；Pololu `VOUT → OVP IN+`，`GND → OVP IN−`。Pololu 真正的丝印是 **`VIN / VOUT / GND`**，没有独立 `VIN− / VOUT−` 引脚；其 `EN`、`PG` 和 `VRP` 保持厂家默认连接/悬空状态，**不要把它们当电源负极或随意并联**。PN Labs Protect 采用 **XT60** 接口，需要自配同规格、正确极性配对件及应力消除，不能当作裸焊盘接线。
+`#5807 V+ → F1 → Pololu VIN`，`#5807 GND → Pololu GND`；Pololu `VOUT → OVP IN+`，`GND → OVP IN−`。Pololu 真正的丝印是 **`VIN / VOUT / GND`**，没有独立 `VIN− / VOUT−` 引脚；其 `EN`、`PG` 和 `VRP` 保持厂家默认连接/悬空状态，**不要把它们当电源负极或随意并联**。PN Labs Protect 采用 **XT60** 接口；部分卖家包装含配对插头，采购时核实后按正确极性配线，并做好应力消除，不能当作裸焊盘接线。
 
 ### OVP 设置示例（PN Labs Protect）
 
@@ -79,6 +79,7 @@ P-D 比 P-B 少一个开关电源和输入侧保险丝，减少焊接与射频�
 - 不直接用 PD 15 V 档省去降压：虽可能落在工作电压内，但对 PD 容差和瞬态的安全余量变小。
 - 若你**已经有实测可提供固定 12 V / ≥3 A PDO 的 PD 充电器**，可另设计“12 V 触发器＋OVP＋保险丝”的短链版本；不能假设所有 PD 充电器都支持固定 12 V。
 - 不将 XL4016 的“8 A / 200 W”等营销标签视为最终连续额定值。
+- 不选用 PN Labs **Protect Nano（SKU 9801）** 替代 Protect：虽然其 12 V 模式可处理约 5 A，但厂家给出的**最大直流阻断电压只有 25 V**，未覆盖 TA3005U 的 28 V PDO 异常档，且它没有本方案所需的可独立调校到 14.3 V 的阈值。
 
 ## 装配顺序
 
